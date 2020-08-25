@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <style>
+        img {
+            width: 100%;
+        }
+
+        section {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        article {
+            flex-basis: 400px;
+            flex-grow: 1;
+            padding: 30px;
+        }
+
+        h1,
+        footer {
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Title</h1>
+    </header>
+    <main>
+        <h2>undertitle</h2>
+        <section>
+
+
+            <article>
+                <img src="mand.jpg" alt="">
+                <h3>Article 1</h3>
+                <p>Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. Lorem Ipsum har været standard fyldtekst siden 1500-tallet, hvor en ukendt trykker sammensatte en tilfældig spalte for at trykke en bog til sammenligning af forskellige skrifttyper. Lorem Ipsum har ikke alene overlevet fem århundreder, men har også vundet indpas i elektronisk typografi uden væsentlige ændringer. Sætningen blev gjordt kendt i 1960'erne med lanceringen af Letraset-ark, som indeholdt afsnit med Lorem Ipsum, og senere med layoutprogrammer som Aldus PageMaker, som også indeholdt en udgave af Lorem Ipsum.</p>
+            </article>
+
+            <article>
+                <img src="sko.jpg" alt="">
+                <h3>Article 2</h3>
+                <p>Lorem Ipsum er ganske enkelt fyldtekst fra print- og typografiindustrien. Lorem Ipsum har været standard fyldtekst siden 1500-tallet, hvor en ukendt trykker sammensatte en tilfældig spalte for at trykke en bog til sammenligning af forskellige skrifttyper. Lorem Ipsum har ikke alene overlevet fem århundreder, men har også vundet indpas i elektronisk typografi uden væsentlige ændringer. Sætningen blev gjordt kendt i 1960'erne med lanceringen af Letraset-ark, som indeholdt afsnit med Lorem Ipsum, og senere med layoutprogrammer som Aldus PageMaker, som også indeholdt en udgave af Lorem Ipsum.</p>
+            </article>
+        </section>
+    </main>
+    <footer>
+
+        <p>This is de footer</p>
+
+    </footer>
+
+
+    <script>
+        const overskrift = document.querySelector("h1");
+        const underoverskrift = document.querySelector("h2");
+
+        overskrift.textContent;
+        console.log(overskrift.textContent);
+        overskrift.textContent = "ny Title";
+        console.log(overskrift.textContent);
+
+
+
+        /** articel 1 **/
+        const overskrift_article_1 = document.querySelector("article:nth-child(1) h3");
+        const img_1 = document.querySelector("article:nth-child(1) img");
+        const broedtekst_1 = document.querySelector(" article:nth-child(1) p");
+
+
+
+        overskrift_article_1.textContent;
+        console.log(img_1);
+        overskrift_article_1.textContent = "ny overskrift";
+
+
+
+        console.log(img_1.textContent);
+        img_1.src = "sko.jpg";
+        img_1.alt = "sko";
+
+
+        broedtekst_1.textContent;
+        console.log(broedtekst_1.textContent);
+        broedtekst_1.textContent = "ny tekst";
+
+
+
+
+        /** articel 2 **/
+        const overskrift_article_2 = document.querySelector("article:nth-child(2) h3");
+        const img_2 = document.querySelector("article:nth-child(2) img");
+        const broedtekst_2 = document.querySelector("article:nth-child(2) p");
+
+
+        overskrift_article_2.textContent;
+        console.log(overskrift_article_2.textContent);
+        overskrift_article_2.textContent = "ny overskrift";
+
+
+        console.log(img_1.textContent);
+        img_2.src = "mand.jpg";
+        img_2.alt = "mand";
+
+
+
+        broedtekst_2.textContent;
+        console.log(broedtekst_2.textContent);
+        broedtekst_2.textContent = "ny tekst";
+
+
+        const footer = document.querySelector("footer p");
+
+
+
+
+
+
+
+
+        console.log(underoverskrift);
+
+        console.log(img_1);
+        console.log(broedtekst_1);
+        console.log(broedtekst_1);
+
+        console.log(img_2);
+        console.log(broedtekst_2);
+        console.log(broedtekst_2);
+
+        console.log(footer);
+
+    </script>
+</body>
+
+</html>
