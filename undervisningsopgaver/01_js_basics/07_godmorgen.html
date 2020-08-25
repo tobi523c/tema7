@@ -17,16 +17,14 @@
 
      <p id="demo"></p>
      <script>
-         function myFunction() {
-             let d = new Date();
-             let n = d.getHours();
-             document.getElementById("demo").innerHTML = n;
-         }
+         let time = new Date().getHours();
 
 
-         if (n > 5 && < 10) {
-             resultat = " Godmorgen mellem kl. 5 og kl 10 "
-         } else if (n > 10 && < 18) {
+
+
+         if (time < 5) {
+             console.log(" Godmorgen mellem kl. 5 og kl 10 ")
+         } else if (time < ) {
              resultat = "Goddag mellem kl 10 og 18"
 
          } else if (n > 18 && < 24) {
