@@ -11,33 +11,33 @@
  <body>
 
 
-     <p>Click the button to display the hour of the time right now.</p>
 
-     <button onclick="myFunction()">Try it</button>
-
-     <p id="demo"></p>
      <script>
          let time = new Date().getHours();
 
+         console.log(time)
 
 
 
+
+         //Godnat mellem 24 og 5
          if (time < 5) {
-             console.log(" Godmorgen mellem kl. 5 og kl 10 ")
-         } else if (time < ) {
-             resultat = "Goddag mellem kl 10 og 18"
+             console.log("Godnat");
+         }
 
-         } else if (n > 18 && < 24) {
-             resultat = "Godaften mellem 18 og 24"
+         // Godmorgen mellem kl. 5 og kl 10
+         else if (time < 10) {
+             console.log("Godmorgen");
+         }
 
-
-         } else
-             resultat = "Godnat mellem 24 og 5"
-
-
-
-
-         console.log(resultat);
+         //Goddag mellem kl 10 og 18
+         else if (time < 18) {
+             console.log("Goddag");
+         }
+         //Godaften mellem 18 og 24
+         else {
+             console.log("Godaften");
+         }
 
      </script>
  </body>
