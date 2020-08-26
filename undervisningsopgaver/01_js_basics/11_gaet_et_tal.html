@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+ <html lang="">
+
+ <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title></title>
+     <link rel="stylesheet" href="">
+ </head>
+
+ <body>
+     <p>Gæt et tal mellem 0 0g 20!</p>
+     <input type="text" id="guss">
+
+     <button>Prøv lykken!</button>
+     <button id="nyt_spil">Nyt spil!</button>
+
+
+     <script>
+         let guss;
+         let tal = Math.round(Math.random() * 20)
+         let antal = 1;
+
+
+         document.querySelector("button").addEventListener("click", guessTal);
+         document.querySelector("#nyt_spil").addEventListener("click", nytSpil);
+
+         document.querySelector("#nyt_spil").style.visibility = "hidden";
+
+
+         function guessTal() {
+
+             guss = document.querySelector("#guss").value;
+
+
+             if (guss == tal) {
+                 console.log("Rigtigt du prøvede" + antal + "gange");
+
+
+                 document.querySelector("#nyt_spil").style.visibility = "visible";
+                 document.querySelector("button").style.visibility = "hidden";
+
+
+
+             } else if (tal > guss) {
+                 console.log("for lavt!");
+                 antal++;
+
+             } else {
+                 console.log("For højt!");
+                 antal++;
+
+             }
+
+
+         }
+
+         function nytSpil() {
+
+             location.reload();
+         }
+
+     </script>
+ </body>
+
+ </html>
