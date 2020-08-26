@@ -1,0 +1,87 @@
+ <!DOCTYPE html>
+ <html lang="">
+
+ <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title></title>
+     <link rel="stylesheet" href="">
+ </head>
+
+ <body>
+     <section>
+         <p>Gamle hundeberegner</p>
+         <input type="text" id="gammel_hundealder">
+
+         <button id="hundeberegner_gammel">klik her!</button>
+
+
+
+         <p>Ny hundeberegner</p>
+         <input type="text" id="ny_hundealder">
+
+         <button id="hundeberegner_ny">klik her!</button>
+
+     </section>
+
+     <script>
+         const overskrift = document.querySelector("h3")
+         document.querySelector("#hundeberegner_gammel").addEventListener("click", hundeBeregnerGammel);
+         document.querySelector("#hundeberegner_ny").addEventListener("click", hundeBeregnerNy);
+
+
+         function hundeBeregnerGammel() {
+             let gammel_hundealder = document.querySelector("#gammel_hundealder").value;
+             let beregnerGammel = gammel_hundealder * 7.5;
+
+
+
+             let mainSection = document.querySelector("section");
+             // ny article element
+
+             // ny H# element
+             let nyOverskrift = document.createElement("h3")
+             // ny tekst i overskrift
+             let overskriftText = document.createTextNode(`Hunds alder med den gamle beregner er ${beregnerGammel}`)
+
+
+             // tilføj overskrift til h3
+             nyOverskrift.appendChild(overskriftText);
+
+
+             // tilføj overskrift til article
+             mainSection.appendChild(nyOverskrift);
+
+
+
+         }
+
+         function hundeBeregnerNy() {
+             let ny_hundealder = document.querySelector("#ny_hundealder").value;
+             let beregnerNy = 16 * Math.log(ny_hundealder) + 31;
+
+             console.log(beregnerNy);
+
+             let mainSection = document.querySelector("section");
+             // ny article element
+
+             // ny H# element
+             let nyOverskrift = document.createElement("h3")
+             // ny tekst i overskrift
+             let overskriftText = document.createTextNode(`Hunds alder med den nye beregner er ${beregnerNy}`)
+
+
+             // tilføj overskrift til h3
+             nyOverskrift.appendChild(overskriftText);
+
+
+             // tilføj overskrift til article
+             mainSection.appendChild(nyOverskrift);
+
+
+         }
+
+     </script>
+ </body>
+
+ </html>
