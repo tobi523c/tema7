@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+ <html lang="">
+
+ <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title></title>
+     <link rel="stylesheet" href="">
+ </head>
+
+ <body>
+     <p>Indtast din alder!</p>
+     <input type="text" id="alder">
+     <p>Indtast din dates alder!</p>
+     <input type="text" id="alderDate">
+
+     <button>klik her!</button>
+
+
+
+     <script>
+         document.querySelector("button").addEventListener("click", udregnAlder);
+
+         function udregnAlder() {
+             let alder = document.querySelector("#alder").value;
+             let alderDate = document.querySelector("#alderDate").value;
+             let dateudregnerHoj = alder / 2 + 7;
+             let dateudregnerLav = (alder - 7) * 2;
+
+             console.log(dateudregnerHoj);
+             console.log(dateudregnerLav);
+             console.log(alderDate);
+
+             if (alderDate < 15 || alder < 15) {
+                 console.log("Fejl Minimumsalder på 15år!");
+
+             } else if (alderDate <= dateudregnerLav && alderDate >= dateudregnerHoj) {
+                 console.log("Date godkendt!");
+
+             } else {
+                 console.log("Date Ikke godkendt!");
+
+
+             }
+
+
+         }
+
+     </script>
+ </body>
+
+ </html>
