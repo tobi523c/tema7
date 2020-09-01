@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        img {
+            width: 90%;
+
+            padding: 5% 5% 0 5%;
+            border-radius: 20px;
+
+
+        }
+
+        body {
+
+            background-image: linear-gradient(-90deg, rgba(129, 155, 152, 0.73), rgba(186, 200, 198, 0.51));
+
+        }
+
+        section {
+            width: 90vw;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-gap: 5px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+
+        }
+
+        header {
+            text-align: center;
+        }
+
+        template {}
+
+        article {
+
+            margin: 7px;
+            border-radius: 30px;
+            background-color: rgb(250, 250, 250);
+            box-shadow: 5px 5px 12px rgba(141, 153, 151, 0.73);
+        }
+
+        h1 {
+            font-family: lato;
+            font-size: 1.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+
+            margin: 25px 0 25px 0;
+
+        }
+
+        h2 {
+            font-family: lato;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            padding: 0 0 0 15px;
+            margin: 15px 0 5px 0;
+
+        }
+
+        p {
+            font-family: lato;
+            font-size: 0.9rem;
+            letter-spacing: 0.06rem;
+            padding: 0 0 0 15px;
+            margin: 10px 0 10px 0;
+        }
+
+        p:last-child {
+            padding: 0 0 10px 15px;
+        }
+
+        .line {
+            border-bottom: 1px solid black;
+            margin: 0px 15px 0px 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Persongalleri</h1>
+    </header>
+
+    <section>
+
+        <template>
+            <article>
+
+                <img src="" alt="">
+                <h2 class="navn"></h2>
+                <div class="line"></div>
+                <p class="efternavn"></p>
+                <p class="job"></p>
+            </article>
+        </template>
+    </section>
+    <script>
+        let container = document.querySelector("section");
+        let temp = document.querySelector("template");
+
+        const link = "https://spreadsheets.google.com/feeds/list/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/od6/public/values?alt=json";
+
+
+        async function hentdata() {
+            const respons = await fetch(link)
+            const json = await respons.json();
+            vis(json);
+        }
+
+        function vis(personer) {
+            console.log(personer)
+            personer.feed.entry.forEach(person => {
+                const klon = temp.cloneNode(true).content;
+                klon.querySelector(".navn").textContent = person.gsx$navn.$t;
+                klon.querySelector("img").src = person.gsx$billede.$t;
+                klon.querySelector(".efternavn").textContent = person.gsx$efternavn.$t;
+                klon.querySelector(".job").textContent = person.gsx$job.$t;
+                container.appendChild(klon);
+            });
+        }
+
+
+        hentdata(link);
+    </script>
+</body></html>

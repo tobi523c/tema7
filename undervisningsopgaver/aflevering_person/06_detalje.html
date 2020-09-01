@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        img {
+            width: 100%;
+            height: 60%;
+            border-radius: 20px;
+            object-fit: contain;
+
+
+        }
+
+
+
+
+
+
+        h1 {
+            font-family: lato;
+            font-size: 1.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+
+            margin: 25px 0 25px 0;
+
+        }
+
+        h2 {
+            font-family: lato;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            padding: 0 0 0 15px;
+            margin: 15px 0 5px 0;
+
+        }
+
+        p {
+            font-family: lato;
+            font-size: 0.9rem;
+            letter-spacing: 0.06rem;
+            padding: 0 0 0 15px;
+            margin: 10px 0 10px 0;
+        }
+
+        p:last-child {
+            padding: 0 0 10px 15px;
+        }
+
+        .line {
+            border-bottom: 1px solid black;
+            margin: 0px 15px 0px 15px;
+        }
+
+        button {
+            border-radius: 5px;
+            border: none;
+            padding: 5px 20px 5px 20px;
+            margin: 30px 0 10px;
+            0;
+
+        }
+
+        .valgt {
+            background-color: cadetblue;
+
+        }
+
+        #detalje {
+
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(60, 60, 60, 0.8);
+
+            max-width: 1800px;
+
+
+        }
+
+        #detalje_article {
+            width: 80vw;
+            height: 80vh;
+            margin: 4rem auto;
+            background-color: white;
+            display: flex;
+
+
+
+        }
+
+        #luk {
+
+            top: 0;
+            right: 1em;
+            background-color: white;
+            color: black;
+            padding: 10px;
+
+        }
+
+        .colum_1 {}
+
+        #detalje_article img {
+            max-width: 500px;
+            padding: 10px 10px 10px 10px;
+            border-radius: 30px;
+
+        }
+
+        #detalje_article h2 {
+            padding: 30px 10px 15px 30px;
+
+
+        }
+
+        #detalje_article p {
+            padding: 0px 10px 0px 30px;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <section id="detalje">
+        <article id="detalje_article">
+            <div id="luk">x</div>
+            <img src="" alt="">
+            <div class="colum_1">
+                <h2>Navn Efternavn</h2>
+                <p>Alder: <span class="alder"></span></p>
+                <p>Hobby: <span class="hobby"></span></p>
+                <p>kæledyr: <span class="kdyr"></span></p>
+                <p>bopæl: <span class="by"></span></p>
+                <p>Job: <span class="job"></span></p>
+            </div>
+        </article>
+    </section>
+
+
+
+
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
+
+
+        let personer;
+        let filter = "alle"
+        const detalje = document.querySelector("#detalje");
+
+        document.addEventListener("DOMContentLoaded", loadJSON)
+
+
+        async function loadJSON() {
+            const loadJSON = await fetch("https://spreadsheets.google.com/feeds/list/1mtHhpoEkYqVqr1TSnKQ1_sQZWI7FRVjcw3H1oatDOVQ/od6/public/values?alt=json")
+            personer = await loadJSON.json();
+
+            visPersoner();
+        }
+
+        function visPersoner() {
+
+
+            personer.feed.entry.forEach(person => {
+                if (id == person.gsx$id.$t) {
+                    visDetaljer(person)
+                }
+            })
+        }
+
+        function visDetaljer(person) {
+            detalje.style.display = "block";
+            detalje.querySelector("h2").textContent = person.gsx$navn.$t;
+            detalje.querySelector("h2").textContent += " " + person.gsx$efternavn.$t;
+            detalje.querySelector(".alder").textContent = person.gsx$alder.$t;
+            detalje.querySelector(".hobby").textContent = person.gsx$hobby.$t;
+            detalje.querySelector(".by").textContent = person.gsx$by.$t;
+            detalje.querySelector(".job").textContent = person.gsx$job.$t;
+            detalje.querySelector(".kdyr").textContent = person.gsx$kæledyr.$t;
+            detalje.querySelector("img").src = person.gsx$billede.$t;
+
+
+
+
+
+        }
+
+        document.querySelector("#luk").addEventListener("click", () => history.back());
+
+
+
+
+
+        function addEventListenerToButtons() {
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.addEventListener("click", filterBTNs);
+            });
+        }
+
+        function filterBTNs() {
+            filter = this.dataset.køn;
+            document.querySelector("h2").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach((btn) => {
+                btn.classList.remove("valgt");
+
+            })
+            this.classList.add("valgt");
+            visPersoner();
+        }
+    </script>
+</body></html>
